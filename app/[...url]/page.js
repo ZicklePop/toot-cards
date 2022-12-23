@@ -1,3 +1,4 @@
+import Toot from '../../ui/toot'
 import getStatusFromParams from '../../lib/get-status-from-params'
 
 export default async function Page({ params: { url } }) {
@@ -5,9 +6,7 @@ export default async function Page({ params: { url } }) {
 
   return (
     <>
-      <pre>
-        <code>{JSON.stringify(json, null, 2)}</code>
-      </pre>
+      <Toot {...json} />
     </>
   )
 }

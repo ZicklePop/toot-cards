@@ -9,10 +9,10 @@ export default function Head() {
       <link rel="mask-icon" sizes="any" href="/mask-icon.svg" color="#fa3a8e" />
       <meta charSet="utf-8" />
       <meta name="description" content={description} />
-      <meta name="keywords" content="melkat, melanie, kat" />
+      <meta name="keywords" content="mastodon, toot, post, status" />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content="/cover.png" />
-      <meta name="twitter:image:alt" content="logo for melkat.deals" />
+      <meta name="twitter:image:alt" content="logo for toot-embed" />
       <meta name="twitter:title" content={title} />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta property="og:description" content={description} />

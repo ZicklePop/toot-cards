@@ -1,8 +1,7 @@
-import Link from 'next/link'
 import '../styles/global.css'
 
 const cx = {
-  body: 'max-w-5xl mx-auto',
+  body: 'max-w-2xl min-h-screen flex items-center justify-center mx-auto font-sans',
 }
 
 const Layout = ({ children }) => (
