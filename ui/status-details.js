@@ -7,7 +7,7 @@ import formatDate from 'lib/format-date'
 
 function StatusBox({ children, ...rest }) {
   return (
-    <div className="flex pr-3" {...rest}>
+    <div className="flex pr-3 md:pr-0 md:pl-3" {...rest}>
       {children}
     </div>
   )
@@ -23,9 +23,14 @@ function StatusText({ children, ...rest }) {
 
 function StatusTime({ time, ...rest }) {
   return (
-    <time datetime={time} {...rest}>
-      {formatDate(time)}
-    </time>
+    <>
+      <time className="hidden md:block" dateTime={time} {...rest}>
+        {formatDate(time)}
+      </time>
+      <time className="block md:hidden" dateTime={time} {...rest}>
+        {formatDate(time, true)}
+      </time>
+    </>
   )
 }
 
@@ -38,33 +43,40 @@ export default function StatusDetails({
   url,
 }) {
   return (
-    <a href={url} className="flex flex-row items-center pt-3">
-      <StatusBox title="created at">
-        <ClockIcon />
-        <StatusText>
-          <StatusTime time={created_at} />
-        </StatusText>
-      </StatusBox>
-      {edited_at && (
-        <StatusBox title="edited at">
-          <EditIcon />
-          <StatusText>
-            <StatusTime time={edited_at} />
-          </StatusText>
+    <a
+      href={url}
+      className="flex cursor-pointer flex-col pt-4 text-neutral-500 dark:text-neutral-400 md:flex-row"
+    >
+      <div className="flex flex-row pb-2 align-top md:order-2">
+        <StatusBox title="reply count">
+          <ReplyIcon />
+          <StatusText>{replies_count}</StatusText>
         </StatusBox>
-      )}
-      <StatusBox title="reply count">
-        <ReplyIcon />
-        <StatusText>{replies_count}</StatusText>
-      </StatusBox>
-      <StatusBox title="boost count">
-        <ReblogIcon />
-        <StatusText>{reblogs_count}</StatusText>
-      </StatusBox>
-      <StatusBox title="fav count">
-        <FavouriteIcon />
-        <StatusText>{favourites_count}</StatusText>
-      </StatusBox>
+        <StatusBox title="boost count">
+          <ReblogIcon />
+          <StatusText>{reblogs_count}</StatusText>
+        </StatusBox>
+        <StatusBox title="fav count">
+          <FavouriteIcon />
+          <StatusText>{favourites_count}</StatusText>
+        </StatusBox>
+      </div>
+      <div className="w-full align-top md:order-1">
+        <div className="flex pr-3 pb-2" title="created at">
+          <ClockIcon />
+          <StatusText>
+            <StatusTime time={created_at} />
+          </StatusText>
+        </div>
+        {edited_at && (
+          <div className="flex pr-3" title="edited at">
+            <EditIcon />
+            <StatusText>
+              <StatusTime time={edited_at} />
+            </StatusText>
+          </div>
+        )}
+      </div>
     </a>
   )
 }

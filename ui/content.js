@@ -1,3 +1,8 @@
 export default function Content({ content }) {
-  return <div dangerouslySetInnerHTML={{ __html: content }} />
+  return (
+    <div
+      className="prose text-xl dark:prose-invert"
+      dangerouslySetInnerHTML={{ __html: content }}
+    />
+  )
 }
