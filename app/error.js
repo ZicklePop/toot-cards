@@ -1,3 +1,5 @@
+'use client'
+
 import WarningIcon from '../ui/icons/warning'
 import Link from 'next/link'
 
@@ -8,7 +10,7 @@ export default function NotFound() {
         <span className="m-3 text-rose-500">
           <WarningIcon />
         </span>
-        Page not found
+        Toot not found
       </div>
       <div className="flex w-full justify-center py-3">
         <Link
