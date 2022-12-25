@@ -1,8 +1,8 @@
 {
-  "name": "toot-embed",
+  "name": "toots",
   "version": "0.0.1",
   "license": "Unlicense",
-  "repository": "github:zicklepop/toot-embed",
+  "repository": "github:zicklepop/toots",
   "scripts": {
     "dev": "next",
     "start": "next start",
