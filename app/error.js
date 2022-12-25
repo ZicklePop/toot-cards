@@ -15,7 +15,7 @@ export default function NotFound() {
       <div className="flex w-full justify-center py-3">
         <Link
           href="/"
-          className="rounded-md bg-indigo-500 px-5 py-3 font-bold text-white hover:bg-indigo-400 active:bg-indigo-600 motion-safe:transition-colors"
+          className="rounded border-2 border-indigo-600 bg-indigo-500 px-5 py-3 font-medium text-white shadow-lg hover:bg-indigo-600 active:bg-indigo-700 motion-safe:transition-colors"
         >
           Home
         </Link>

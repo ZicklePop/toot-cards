@@ -12,7 +12,7 @@ export default function Attachments({ attachments }) {
           key={id}
           href={url}
           className={`relative ${
-            hasMultipleAttachments ? 'inline-block w-1/2' : ''
+            hasMultipleAttachments ? 'inline-block w-1/2' : 'block'
           }`}
         >
           {(type === 'video' || type === 'gifv') && (

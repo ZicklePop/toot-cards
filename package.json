@@ -14,7 +14,9 @@
     "test": "echo \"No tests\""
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.8",
+    "@vercel/og": "^0.0.21",
     "autoprefixer": "^10.4.13",
     "lodash": "^4.17.21",
     "next": "^13.1.0",
