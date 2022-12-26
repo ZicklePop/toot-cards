@@ -1,5 +1,6 @@
 'use client'
 
+import getHandle from '../lib/get-handle'
 import { useRouter } from 'next/navigation'
 
 export default function Form({ children, ...props }) {
@@ -7,7 +8,8 @@ export default function Form({ children, ...props }) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    router.push(e.target.url.value)
+    const shorthand = getHandle(e.target.url.value)
+    router.push(shorthand)
   }
 
   return (

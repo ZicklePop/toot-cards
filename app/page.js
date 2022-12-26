@@ -1,6 +1,11 @@
 import Link from 'next/link'
 import Logo from '../ui/logo'
 import Form from './form'
+import mastodonURIRegex from '../lib/mastodon-uri-regex'
+
+const mastodonURIRegexString = mastodonURIRegex
+  .toString()
+  .substring(1, mastodonURIRegex.toString().length - 2)
 
 export default async function Page() {
   return (
@@ -11,11 +16,12 @@ export default async function Page() {
       </label>
       <div className="flex flex-col md:flex-row md:items-center">
         <input
-          name="url"
-          id="url"
-          type="text"
-          placeholder="https://nyan.lol/@zicklepop/109391055794397972"
           className="form-input block w-full rounded border-2 border-indigo-500 bg-neutral-100 py-3 caret-indigo-500 shadow-lg dark:bg-neutral-800"
+          id="url"
+          name="url"
+          pattern={mastodonURIRegexString}
+          placeholder="https://nyan.lol/@zicklepop/109391055794397972"
+          type="text"
         />
         <button
           type="submit"

@@ -1,20 +1,17 @@
-const title = 'toots'
-const description = 'embed your toots'
+import DefaultTags from '../ui/default-tags'
+
+const title = 'toot cards'
+const description = 'pretty cards and embeds for toots'
 
 export default function Head() {
   return (
     <>
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      <link rel="icon" href="/favicon.ico" />
-      <link rel="mask-icon" sizes="any" href="/mask-icon.svg" color="#fa3a8e" />
-      <meta charSet="utf-8" />
+      <DefaultTags />
       <meta name="description" content={description} />
-      <meta name="keywords" content="mastodon, toot, post, status" />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content="/cover.png" />
-      <meta name="twitter:image:alt" content="logo for toots" />
+      <meta name="twitter:image:alt" content="logo for toot cards" />
       <meta name="twitter:title" content={title} />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta property="og:description" content={description} />
       <meta property="og:image" content="/cover.png" />
       <meta property="og:image:height" content="630" />
