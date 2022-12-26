@@ -1,15 +1,16 @@
 import DefaultTags from '../../ui/default-tags'
 import getStatusFromParams from '../../lib/get-status-from-params'
 
-export default async function Page({ params: { url } }) {
+export default async function Head({ params: { url } }) {
   const { account, content, media_attachments } = await getStatusFromParams(url)
+
   const { display_name, url: profileUrl, username } = account
   const host = profileUrl.split('/')[2]
   const fullUsername = `@${username}@${host}`
   const title = `${display_name} (${fullUsername})`
-  const description = content // strip html tags
-  const image = media_attachments[0]?.url // check type?
-  const altText = media_attachments[0]?.description // default to empty string?
+  const description = content.replace(/<[^>]+>/g, '')
+  const image = media_attachments[0]?.url
+  const altText = media_attachments[0]?.description
 
   return (
     <>
@@ -26,9 +27,7 @@ export default async function Page({ params: { url } }) {
       <meta property="twitter:image:alt" content={altText} />
       <meta property="twitter:site" content={fullUsername} />
       <meta property="twitter:title" content={title} />
-      <title>
-        {title} - {description}
-      </title>
+      <title>{`${title}: ${description}`}</title>
     </>
   )
 }
