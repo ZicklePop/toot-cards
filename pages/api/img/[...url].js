@@ -1,5 +1,5 @@
-import Toot from '../../ui/toot'
-import getStatusFromParams from '../../lib/get-status-from-params'
+import Toot from '../../../../ui/toot'
+import getStatusFromParams from '../../../lib/get-status-from-params'
 import { ImageResponse } from '@vercel/og'
 
 export const config = {

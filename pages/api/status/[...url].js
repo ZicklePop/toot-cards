@@ -1,4 +1,4 @@
-import getStatusFromParams from '../../lib/get-status-from-params'
+import getStatusFromParams from '../../../lib/get-status-from-params'
 
 export default async function response({ query: { url } }, res) {
   const json = await getStatusFromParams(url)
