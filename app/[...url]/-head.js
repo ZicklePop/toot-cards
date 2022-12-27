@@ -1,21 +1,9 @@
 import DefaultTags from '../../ui/default-tags'
-// import getStatusFromParams from '../../lib/get-status-from-params'
+import getStatusFromParams from '../../lib/get-status-from-params'
 import sanitizeHtml from 'sanitize-html'
 
-async function fetchData(url) {
-  const res = await fetch(
-    `http${process.env.NODE_ENV === 'production' ? 's' : ''}://${
-      process.env.NODE_ENV === 'production'
-        ? process.env.VERCEL_URL
-        : 'localhost:3000'
-    }/api/status/${url.join('/')}`
-  )
-  const json = await res.json()
-  return json
-}
-
 export default async function Head({ params: { url } }) {
-  const { account, content, media_attachments } = await fetchData(url)
+  const { account, content, media_attachments } = await getStatusFromParams(url)
 
   const { display_name, url: profileUrl, username } = account
   const host = profileUrl.split('/')[2]
