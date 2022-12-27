@@ -1,9 +1,14 @@
-import DefaultTags from '../../ui/default-tags'
-import getStatusFromParams from '../../lib/get-status-from-params'
+import DefaultTags from '../../../ui/default-tags'
+import getStatusFromParams from '../../../lib/get-status-from-params'
 import sanitizeHtml from 'sanitize-html'
 
 export default async function Head({ params: { url } }) {
-  const { account, content, media_attachments } = await getStatusFromParams(url)
+  const {
+    account,
+    content,
+    media_attachments,
+    url: statusUrl,
+  } = await getStatusFromParams(url)
 
   const { display_name, url: profileUrl, username } = account
   const host = profileUrl.split('/')[2]
@@ -37,6 +42,7 @@ export default async function Head({ params: { url } }) {
       <meta property="twitter:site" content={fullUsername} />
       <meta property="twitter:title" content={title} />
       <title>{`${title}: ${description}`}</title>
+      <meta httpEquiv="refresh" content={`0;url=${statusUrl}`} />
     </>
   )
 }
