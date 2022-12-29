@@ -11,7 +11,7 @@ function cleanUrl(url = '') {
 }
 
 export default async function handler(req) {
-  const url = cleanUrl(req.nextUrl)
+  const url = decodeURIComponent(cleanUrl(req.nextUrl))
   try {
     const json = await getStatusFromParams(url.split('/'))
     return new ImageResponse(<OGToot {...json} />, {
