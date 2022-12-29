@@ -153,6 +153,8 @@ export default async function handler(req) {
       height: 630,
     })
   } catch (e) {
-    return new Response(`Failed to generate image: ${e}`, { status: 500 })
+    return new Response(`Failed to generate image: ${url.split('/')} ${e}`, {
+      status: 500,
+    })
   }
 }
