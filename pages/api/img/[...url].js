@@ -23,7 +23,10 @@ export default async function handler(req) {
       (
         <div tw="text-3xl bg-white h-full w-full flex text-center items-center justify-center">
           <p>
-            {`Failed to generate image for ${url} with error: ${e.message}`}
+            {`Failed to generate image for ${url.replace(
+              /https?:\/\/?/i,
+              ''
+            )} with error: ${e.message}`}
           </p>
         </div>
       ),
