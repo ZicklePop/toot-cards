@@ -2,24 +2,32 @@ import DefaultTags from '../../../ui/default-tags'
 import getStatusFromParams from '../../../lib/get-status-from-params'
 import sanitizeHtml from 'sanitize-html'
 
-export const devPort = parseInt(process.env.PORT, 10) || 3000
-export const imageHost =
+const devPort = parseInt(process.env.PORT, 10) || 3000
+const imageHost =
   process.env.NODE_ENV !== 'production'
     ? `http://localhost:${devPort}`
     : `https://${process.env.VERCEL_URL}`
+
+function btoa(str) {
+  if (typeof window !== 'undefined') {
+    return window.btoa(str)
+  }
+  return Buffer.from(str).toString('base64')
+}
 
 export default async function Head({ params: { url } }) {
   const {
     account,
     content,
-    media_attachments,
-    url: statusUrl,
+    created_at,
     favourites_count,
+    media_attachments,
     reblogs_count,
     replies_count,
+    url: statusUrl,
   } = await getStatusFromParams(url)
 
-  const { display_name, url: profileUrl, username } = account
+  const { avatar, display_name, url: profileUrl, username } = account
   const host = profileUrl.split('/')[2]
   const fullUsername = `@${username}@${host}`
   const title = `${display_name} (${fullUsername})`
@@ -30,15 +38,30 @@ export default async function Head({ params: { url } }) {
       allowedAttributes: {},
     }
   )
-  const image =
-    media_attachments[0]?.url || `${imageHost}/api/img/${url.join('/')}`
   const altText = media_attachments[0]?.description
-
   const detailedDescription = `${description}💬${replies_count} 🚀${reblogs_count} ⭐️${favourites_count}`
+
+  const imgJson = {
+    account: {
+      avatar,
+      display_name,
+      url: profileUrl,
+      username,
+    },
+    content: description.slice(0, 106),
+    created_at,
+    favourites_count,
+    reblogs_count,
+    replies_count,
+  }
+  const imgData = btoa(JSON.stringify(imgJson))
+
+  const image = media_attachments[0]?.url || `${imageHost}/api/img64/${imgData}`
 
   return (
     <>
       <DefaultTags />
+      <meta httpEquiv="refresh" content={`0;url=${statusUrl}`} />
       <meta property="description" content={detailedDescription} />
       <meta property="og:description" content={detailedDescription} />
       <meta property="og:image" content={image} />
@@ -52,7 +75,6 @@ export default async function Head({ params: { url } }) {
       <meta property="twitter:site" content={fullUsername} />
       <meta property="twitter:title" content={title} />
       <title>{`${title}: ${description}`}</title>
-      <meta httpEquiv="refresh" content={`0;url=${statusUrl}`} />
     </>
   )
 }
