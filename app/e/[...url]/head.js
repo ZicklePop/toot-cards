@@ -48,7 +48,7 @@ export default async function Head({ params: { url } }) {
       url: profileUrl,
       username,
     },
-    content: description.slice(0, 140),
+    content: description.slice(0, 160),
     created_at,
     favourites_count,
     reblogs_count,
