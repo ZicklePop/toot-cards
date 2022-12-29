@@ -19,8 +19,19 @@ export default async function handler(req) {
       height: 630,
     })
   } catch (e) {
-    return new Response(`Failed to generate image: ${e}`, {
-      status: 500,
-    })
+    return new ImageResponse(
+      (
+        <div tw="text-3xl bg-white h-full w-full flex text-center items-center justify-center">
+          Failed to generate image
+          <br />
+          <br />
+          {e}
+        </div>
+      ),
+      {
+        width: 1200,
+        height: 630,
+      }
+    )
   }
 }
