@@ -24,7 +24,7 @@ export default async function Head({ params: { url } }) {
   const fullUsername = `@${username}@${host}`
   const title = `${display_name} (${fullUsername})`
   const description = sanitizeHtml(
-    content?.replaceAll('</p>', '\n\n').replaceAll('<br />', '\n'),
+    content?.replaceAll('</p>', '\n \n ').replaceAll('<br />', '\n '),
     {
       allowedTags: [],
       allowedAttributes: {},
