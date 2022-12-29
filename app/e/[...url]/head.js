@@ -8,6 +8,9 @@ export default async function Head({ params: { url } }) {
     content,
     media_attachments,
     url: statusUrl,
+    favourites_count,
+    reblogs_count,
+    replies_count,
   } = await getStatusFromParams(url)
 
   const { display_name, url: profileUrl, username } = account
@@ -18,25 +21,22 @@ export default async function Head({ params: { url } }) {
     allowedTags: [],
     allowedAttributes: {},
   }).replace(/\n/g, ' ')
-  const image = media_attachments[0]?.url
+  const image = media_attachments[0]?.url || `/api/img/${url.join('/')}`
   const altText = media_attachments[0]?.description
+
+  const detailedDescription = `${description}\n\n💬${replies_count} 🚀${reblogs_count} ⭐️${favourites_count}`
 
   return (
     <>
       <DefaultTags />
-      <meta property="description" content={description} />
-      <meta property="og:description" content={description} />
+      <meta property="description" content={detailedDescription} />
+      <meta property="og:description" content={detailedDescription} />
       <meta property="og:image" content={image} />
       <meta property="og:site_name" content={fullUsername} />
       <meta property="og:title" content={title} />
-      <meta
-        property="twitter:card"
-        content={
-          media_attachments.length === 0 ? 'tweet' : 'summary_large_image'
-        }
-      />
+      <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:creator" content={fullUsername} />
-      <meta property="twitter:description" content={description} />
+      <meta property="twitter:description" content={detailedDescription} />
       <meta property="twitter:image" content={image} />
       <meta property="twitter:image:alt" content={altText} />
       <meta property="twitter:site" content={fullUsername} />
