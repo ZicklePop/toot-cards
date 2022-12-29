@@ -11,7 +11,7 @@ export default async function handler(req) {
     const imgData = searchParams.get('q')
     // Using the deprecated atob because NextJS
     // Edge functions don't support Buffer
-    const json = JSON.parse(atob(imgData))
+    const json = JSON.parse(atob(decodeURIComponent(imgData)))
     return new ImageResponse(<OGToot {...json} />, {
       width: 1200,
       height: 630,

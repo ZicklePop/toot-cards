@@ -54,9 +54,8 @@ export default async function Head({ params: { url } }) {
     reblogs_count,
     replies_count,
   }
-  const imgData = btoa(JSON.stringify(imgJson))
-
-  const image = media_attachments[0]?.url || `${imageHost}/api/img64/${imgData}`
+  const imgData = encodeURIComponent(btoa(JSON.stringify(imgJson)))
+  const image = media_attachments[0]?.url || `${imageHost}/api/img/${imgData}`
 
   return (
     <>
