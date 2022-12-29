@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 export default function UserDetails({ avatar, display_name, url, username }) {
-  const host = url.split('/')[2]
+  const host = url?.split('/')[2]
   return (
     <div className="pb-4">
       <a href={url} className="flex cursor-pointer flex-row items-center">

@@ -1,4 +1,5 @@
 import DefaultTags from '../../../ui/default-tags'
+import Script from 'next/script'
 import getStatusFromParams from '../../../lib/get-status-from-params'
 import sanitizeHtml from 'sanitize-html'
 
@@ -16,6 +17,7 @@ function btoa(str) {
 }
 
 export default async function Head({ params: { url } }) {
+  const json = await getStatusFromParams(url)
   const {
     account,
     content,
@@ -24,8 +26,7 @@ export default async function Head({ params: { url } }) {
     media_attachments,
     reblogs_count,
     replies_count,
-    url: statusUrl,
-  } = await getStatusFromParams(url)
+  } = json
 
   const { avatar, display_name, url: profileUrl, username } = account
   const host = profileUrl.split('/')[2]
@@ -60,7 +61,6 @@ export default async function Head({ params: { url } }) {
   return (
     <>
       <DefaultTags />
-      <meta httpEquiv="refresh" content={`0;url=${statusUrl}`} />
       <meta property="description" content={detailedDescription} />
       <meta property="og:description" content={detailedDescription} />
       <meta property="og:image" content={image} />
@@ -74,6 +74,7 @@ export default async function Head({ params: { url } }) {
       <meta property="twitter:site" content={fullUsername} />
       <meta property="twitter:title" content={title} />
       <title>{`${title}: ${description}`}</title>
+      <Script id="toot">{`window.toot = ${JSON.stringify(json)}`}</Script>
     </>
   )
 }
