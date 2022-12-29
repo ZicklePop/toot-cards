@@ -146,8 +146,8 @@ function Toot({
 
 export default async function handler(req) {
   const url = cleanUrl(req.nextUrl)
+  const json = await getStatusFromParams(url.split('/'))
   try {
-    const json = await getStatusFromParams(url.split('/'))
     return new ImageResponse(<Toot {...json} />, {
       width: 1200,
       height: 630,
