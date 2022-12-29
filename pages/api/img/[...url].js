@@ -148,7 +148,6 @@ export default async function handler(req) {
   const url = cleanUrl(req.nextUrl)
   try {
     const json = await getStatusFromParams(url.split('/'))
-    console.error('👻 ~ file: [...url].js:151 ~ handler ~ json', json)
     return new ImageResponse(<Toot {...json} />, {
       width: 1200,
       height: 630,
