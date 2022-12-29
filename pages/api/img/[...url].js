@@ -22,12 +22,7 @@ export default async function handler(req) {
     return new ImageResponse(
       (
         <div tw="text-3xl bg-white h-full w-full flex text-center items-center justify-center">
-          <p>
-            {`Failed to generate image for ${url.replace(
-              /https?:\/\/?/i,
-              ''
-            )} with error: ${e.message}`}
-          </p>
+          <p>{`Failed to generate image with error: ${e.message}`}</p>
         </div>
       ),
       {
