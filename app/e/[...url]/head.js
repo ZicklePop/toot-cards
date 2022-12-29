@@ -34,7 +34,7 @@ export default async function Head({ params: { url } }) {
     media_attachments[0]?.url || `${imageHost}/api/img/${url.join('/')}`
   const altText = media_attachments[0]?.description
 
-  const detailedDescription = `${description}\n💬${replies_count} 🚀${reblogs_count} ⭐️${favourites_count}`
+  const detailedDescription = `${description}💬${replies_count} 🚀${reblogs_count} ⭐️${favourites_count}`
 
   return (
     <>
