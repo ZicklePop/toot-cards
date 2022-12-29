@@ -1,12 +1,5 @@
-import Toot from '../../ui/toot'
-import getStatusFromParams from '../../lib/get-status-from-params'
+import RenderToot from './render-toot'
 
-export default async function Page({ params: { url } }) {
-  const json = await getStatusFromParams(url)
-
-  return (
-    <>
-      <Toot {...json} />
-    </>
-  )
+export default function Page() {
+  return <RenderToot />
 }

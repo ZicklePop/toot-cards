@@ -1,6 +1,6 @@
-import DefaultTags from '../../../ui/default-tags'
+import DefaultTags from '../../ui/default-tags'
 import Script from 'next/script'
-import getStatusFromParams from '../../../lib/get-status-from-params'
+import getStatusFromParams from '../../lib/get-status-from-params'
 import sanitizeHtml from 'sanitize-html'
 
 const devPort = parseInt(process.env.PORT, 10) || 3000

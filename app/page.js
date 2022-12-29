@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Logo from '../ui/logo'
 import Form from './form'
 import mastodonURIRegex from '../lib/mastodon-uri-regex'
@@ -34,28 +33,28 @@ export default async function Page() {
         <p className="pb-1 font-medium">Example usage:</p>
         <ul className="list-outside list-disc break-all pl-5">
           <li className="py-1">
-            <Link
+            <a
               className="text-indigo-500 underline"
               href="/@zicklepop@nyan.lol/109391055794397972"
             >
               @zicklepop@nyan.lol/109391055794397972
-            </Link>
+            </a>
           </li>
           <li className="py-1">
-            <Link
+            <a
               className="text-indigo-500 underline"
               href="/https://nyan.lol/@zicklepop/109549679282144965"
             >
               https://nyan.lol/@zicklepop/109549679282144965
-            </Link>
+            </a>
           </li>
           <li className="py-1">
-            <Link
+            <a
               className="text-indigo-500 underline"
               href="/nyan.lol/@TheEnbyWitch@peoplemaking.games/109553684783231839"
             >
               nyan.lol/@TheEnbyWitch@peoplemaking.games/109553684783231839
-            </Link>
+            </a>
           </li>
         </ul>
       </div>

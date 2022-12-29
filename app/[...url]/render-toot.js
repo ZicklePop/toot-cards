@@ -1,5 +1,5 @@
 'use client'
-import Toot from '../../../ui/toot'
+import Toot from '../../ui/toot'
 
 const isBrowser = typeof window !== 'undefined'
 
