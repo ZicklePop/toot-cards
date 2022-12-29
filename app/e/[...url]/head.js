@@ -2,6 +2,12 @@ import DefaultTags from '../../../ui/default-tags'
 import getStatusFromParams from '../../../lib/get-status-from-params'
 import sanitizeHtml from 'sanitize-html'
 
+export const devPort = parseInt(process.env.PORT, 10) || 3000
+export const imageHost =
+  process.env.NODE_ENV !== 'production'
+    ? `http://localhost:${devPort}`
+    : `https://${process.env.VERCEL_URL}`
+
 export default async function Head({ params: { url } }) {
   const {
     account,
@@ -21,7 +27,8 @@ export default async function Head({ params: { url } }) {
     allowedTags: [],
     allowedAttributes: {},
   }).replace(/\n/g, ' ')
-  const image = media_attachments[0]?.url || `/api/img/${url.join('/')}`
+  const image =
+    media_attachments[0]?.url || `${imageHost}/api/img/${url.join('/')}`
   const altText = media_attachments[0]?.description
 
   const detailedDescription = `${description}\n\n💬${replies_count} 🚀${reblogs_count} ⭐️${favourites_count}`
