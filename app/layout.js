@@ -6,7 +6,6 @@ const cx = {
 
 const Layout = ({ children }) => (
   <html lang="en">
-    <head />
     <body className={cx.body}>{children}</body>
   </html>
 )
