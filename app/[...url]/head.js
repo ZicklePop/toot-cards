@@ -1,5 +1,4 @@
 import DefaultTags from '../../ui/default-tags'
-import Script from 'next/script'
 import getStatusFromParams from '../../lib/get-status-from-params'
 import sanitizeHtml from 'sanitize-html'
 
@@ -74,7 +73,6 @@ export default async function Head({ params: { url } }) {
       <meta property="twitter:site" content={fullUsername} />
       <meta property="twitter:title" content={title} />
       <title>{`${title}: ${description}`}</title>
-      <Script id="toot">{`window.toot = ${JSON.stringify(json)}`}</Script>
     </>
   )
 }
