@@ -3,6 +3,7 @@
 ## todo
 
 - [ ] fix bugs
+- [ ] gifv support
 
 
 ## future
