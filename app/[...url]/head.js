@@ -33,12 +33,16 @@ export default async function Head({ params: { url } }) {
   const fullUsername = `@${username}@${host}`
   const title = `${display_name} (${fullUsername})`
   const description = sanitizeHtml(
-    content?.replaceAll('</p>', ' \n \n').replaceAll('<br />', ' \n'),
+    content
+      ?.replaceAll('</p>', ' \n \n')
+      .replaceAll('<br />', ' \n')
+      .replaceAll(/[\s\n]*?$/g, ''),
     {
       allowedTags: [],
       allowedAttributes: {},
     }
   )
+  const hasMedia = media_attachments.length > 0
   const detailedDescription = `${description}💬${replies_count} 🚀${reblogs_count} ⭐️${favourites_count}`
   const imgJson = {
     account: {
@@ -47,13 +51,16 @@ export default async function Head({ params: { url } }) {
       url: profileUrl,
       username,
     },
-    content: description.slice(0, 200),
+    content: description
+      .slice(0, 200)
+      .replaceAll(/[“”]/g, '"')
+      .replaceAll(/[‘’]/g, "'")
+      .replaceAll('…', '...'),
     created_at,
     favourites_count,
     reblogs_count,
     replies_count,
   }
-  const hasMedia = media_attachments.length > 0
   const imgData = encodeURIComponent(btoa(JSON.stringify(imgJson)))
   const imageUrl = `${imageHost}/api/img/${imgData}`
 
