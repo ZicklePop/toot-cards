@@ -3,36 +3,9 @@ import EditIcon from './icons/edit'
 import FavouriteIcon from './icons/favourite'
 import ReblogIcon from './icons/reblog'
 import ReplyIcon from './icons/reply'
-import formatDate from 'lib/format-date'
-
-function StatusBox({ children, ...rest }) {
-  return (
-    <div className="flex pr-3 md:pr-0 md:pl-3" {...rest}>
-      {children}
-    </div>
-  )
-}
-
-function StatusText({ children, ...rest }) {
-  return (
-    <div className="pl-1" {...rest}>
-      {children}
-    </div>
-  )
-}
-
-function StatusTime({ time, ...rest }) {
-  return (
-    <>
-      <time className="hidden md:block" dateTime={time} {...rest}>
-        {formatDate(time)}
-      </time>
-      <time className="block md:hidden" dateTime={time} {...rest}>
-        {formatDate(time, true)}
-      </time>
-    </>
-  )
-}
+import StatusBox from './status-box'
+import StatusText from './status-text'
+import StatusTime from './status-time'
 
 export default function StatusDetails({
   created_at,
