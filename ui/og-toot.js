@@ -39,7 +39,7 @@ export default function OGToot({
       </div>
       <div tw="flex relative flex-col grow justify-center text-6xl py-4">
         <div
-          tw="flex overflow-hidden max-h-[21rem]"
+          tw="flex overflow-hidden max-h-[21rem] w-full"
           style={{ whiteSpace: 'pre-line' }}
         >
           {sanitizeHtml(
