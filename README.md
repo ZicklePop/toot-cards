@@ -2,9 +2,7 @@
 
 ## todo
 
-- [ ] dates are all wrong
-- [ ] image generation cant handle special characters like quotes
-- [ ] videos in open graph
+- [ ] fix bugs
 
 
 ## future
@@ -13,3 +11,4 @@
 - [ ] video playback
 - [ ] ability to look up users
 - [ ] ability to see replies
+- [ ] use a font in image generation
