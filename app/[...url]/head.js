@@ -38,9 +38,7 @@ export default async function Head({ params: { url } }) {
       allowedAttributes: {},
     }
   )
-  const altText = media_attachments[0]?.description
   const detailedDescription = `${description}💬${replies_count} 🚀${reblogs_count} ⭐️${favourites_count}`
-
   const imgJson = {
     account: {
       avatar,
@@ -55,23 +53,61 @@ export default async function Head({ params: { url } }) {
     replies_count,
   }
   const imgData = encodeURIComponent(btoa(JSON.stringify(imgJson)))
-  const image = media_attachments[0]?.url || `${imageHost}/api/img/${imgData}`
+
+  const mediaAlt = media_attachments[0]?.description
+  const mediaType = media_attachments[0]?.type
+  const mediaUrl =
+    media_attachments[0]?.url || `${imageHost}/api/img/${imgData}`
+  const mediaWidth = media_attachments[0]?.meta?.original?.width
+  const mediaHeight = media_attachments[0]?.meta?.original?.height
 
   return (
     <>
       <DefaultTags />
-      <meta property="description" content={detailedDescription} />
+      <meta name="title" content={title} />
+      <meta name="description" content={detailedDescription} />
       <meta property="og:description" content={detailedDescription} />
-      <meta property="og:image" content={image} />
       <meta property="og:site_name" content={fullUsername} />
       <meta property="og:title" content={title} />
-      <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:creator" content={fullUsername} />
       <meta property="twitter:description" content={detailedDescription} />
-      <meta property="twitter:image" content={image} />
-      <meta property="twitter:image:alt" content={altText} />
       <meta property="twitter:site" content={fullUsername} />
       <meta property="twitter:title" content={title} />
+      {mediaType === 'image' && (
+        <>
+          <meta property="og:image" content={mediaUrl} />
+          <meta property="og:image:alt" content={mediaAlt} />
+          <meta property="og:image:height" content={mediaHeight} />
+          <meta property="og:image:width" content={mediaWidth} />
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta property="twitter:image" content={mediaUrl} />
+          <meta property="twitter:image:alt" content={mediaAlt} />
+        </>
+      )}
+      {mediaType === 'video' && (
+        <>
+          <meta name="twitter:card" content="player" />
+          <meta name="twitter:player" content={mediaUrl} />
+          <meta name="twitter:player:height" content={mediaHeight} />
+          <meta name="twitter:player:width" content={mediaWidth} />
+          <meta property="og:type" content="video.other" />
+          <meta property="og:video:height" content={mediaHeight} />
+          <meta property="og:video:type" content="video/mp4" />
+          <meta property="og:video:url" content={mediaUrl} />
+          <meta property="og:video:width" content={mediaWidth} />
+        </>
+      )}
+      {!mediaType && (
+        <>
+          <meta property="og:image" content={mediaUrl} />
+          <meta property="og:image:alt" content={description} />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta property="twitter:image" content={mediaUrl} />
+          <meta property="twitter:image:alt" content={description} />
+        </>
+      )}
       <title>{`${title}: ${description}`}</title>
     </>
   )
