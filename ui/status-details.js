@@ -1,8 +1,8 @@
-import ClockIcon from './icons/clock'
-import EditIcon from './icons/edit'
-import FavouriteIcon from './icons/favourite'
-import ReblogIcon from './icons/reblog'
-import ReplyIcon from './icons/reply'
+import ClockIcon from '@heroicons/react/24/outline/ClockIcon'
+import PencilSquareIcon from '@heroicons/react/24/outline/PencilSquareIcon'
+import StarIcon from '@heroicons/react/24/outline/StarIcon'
+import ArrowPathIcon from '@heroicons/react/24/outline/ArrowPathIcon'
+import ChatBubbleLeftEllipsisIcon from '@heroicons/react/24/outline/ChatBubbleLeftEllipsisIcon'
 import StatusBox from './status-box'
 import StatusText from './status-text'
 import StatusTime from './status-time'
@@ -23,28 +23,28 @@ export default function StatusDetails({
       >
         <div className="flex flex-row pb-2 align-top md:order-2 md:pb-0">
           <StatusBox title="reply count">
-            <ReplyIcon />
+            <ChatBubbleLeftEllipsisIcon className="h-6 w-6" />
             <StatusText>{replies_count}</StatusText>
           </StatusBox>
           <StatusBox title="boost count">
-            <ReblogIcon />
+            <ArrowPathIcon className="h-6 w-6" />
             <StatusText>{reblogs_count}</StatusText>
           </StatusBox>
           <StatusBox title="fav count">
-            <FavouriteIcon />
+            <StarIcon className="h-6 w-6" />
             <StatusText>{favourites_count}</StatusText>
           </StatusBox>
         </div>
         <div className="w-full align-top md:order-1">
           <div className="flex pr-3 pb-2 md:pb-0" title="created at">
-            <ClockIcon />
+            <ClockIcon className="h-6 w-6" />
             <StatusText>
               <StatusTime time={created_at} />
             </StatusText>
           </div>
           {edited_at && (
             <div className="flex pr-3" title="edited at">
-              <EditIcon />
+              <PencilSquareIcon className="h-6 w-6" />
               <StatusText>
                 <StatusTime time={edited_at} />
               </StatusText>

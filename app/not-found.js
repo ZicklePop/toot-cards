@@ -1,4 +1,4 @@
-import WarningIcon from '../ui/icons/warning'
+import ExclamationTriangleIcon from '@heroicons/react/24/outline/ExclamationTriangleIcon'
 import Link from 'next/link'
 
 export default function NotFound() {
@@ -6,7 +6,7 @@ export default function NotFound() {
     <div className="flex flex-col">
       <div className="flex items-center">
         <span className="m-3 text-rose-500">
-          <WarningIcon />
+          <ExclamationTriangleIcon className="h-6 w-6" />
         </span>
         Page not found
       </div>
