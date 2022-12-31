@@ -2,7 +2,6 @@
 
 ## todo
 
-- [ ] fix bugs
 - [ ] gifv support
 
 
@@ -12,4 +11,3 @@
 - [ ] video playback
 - [ ] ability to look up users
 - [ ] ability to see replies
-- [ ] use a font in image generation

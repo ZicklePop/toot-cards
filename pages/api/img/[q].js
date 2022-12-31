@@ -6,7 +6,7 @@ export const config = {
 }
 
 const font = fetch(
-  new URL('../../../public/IBMPlexSans-Regular.ttf', import.meta.url)
+  new URL('../../../public/IBMPlexSans-Medium.ttf', import.meta.url)
 ).then(res => res.arrayBuffer())
 const boldFont = fetch(
   new URL('../../../public/IBMPlexSans-Bold.ttf', import.meta.url)
