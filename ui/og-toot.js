@@ -14,7 +14,10 @@ export default function OGToot({
 }) {
   const host = url.split('/')[2]
   return (
-    <div tw="flex flex-col h-screen w-full text-neutral-800 bg-neutral-100 p-8">
+    <div
+      style={{ fontFamily: '"IBM Plex"' }}
+      tw="flex flex-col h-screen w-full text-neutral-800 bg-neutral-100 p-8"
+    >
       <div tw="flex w-full flex-row">
         <div tw="flex justify-center items-center">
           <img src={avatar} tw="w-36 h-36 rounded-lg shadow-lg" />
@@ -23,7 +26,14 @@ export default function OGToot({
           tw="flex flex-col grow justify-center overflow-hidden max-w-[62rem] h-full text-5xl px-8"
           style={{ whiteSpace: 'nowrap' }}
         >
-          <div tw="flex">{display_name?.replace(/:.*?:/gi, '')}</div>
+          <div
+            tw="flex"
+            style={{
+              fontFamily: '"IBM Plex Bold"',
+            }}
+          >
+            {display_name?.replace(/:.*?:/gi, '')}
+          </div>
           <div tw="flex text-4xl">
             @{username}
             <span tw="text-neutral-500">@{host}</span>
@@ -58,7 +68,7 @@ export default function OGToot({
           }}
         ></div>
       </div>
-      <div tw="flex w-full flex-row text-neutral-500 justify-between text-4xl">
+      <div tw="flex w-full flex-row text-neutral-500 justify-between text-3xl">
         <div tw="flex flex-row grow items-center">
           <div tw="flex mr-8">
             <svg
@@ -94,7 +104,7 @@ export default function OGToot({
             </svg>
             <div tw="flex pl-4">{reblogs_count}</div>
           </div>
-          <div tw="flex mr-8">
+          <div tw="flex mr-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
