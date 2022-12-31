@@ -4,14 +4,14 @@ export default function UserDetails({ avatar, display_name, url, username }) {
   return (
     <div className="pb-4">
       <a href={url} className="flex cursor-pointer flex-row items-center">
-        <div className="pr-3">
+        <div className="shrink-0 pr-3">
           <img
             src={avatar}
             alt={`${display_name}'s avatar`}
-            className="h-16 w-16 rounded-md"
+            className="aspect-square h-16 w-16 rounded-md"
           />
         </div>
-        <div className="">
+        <div className="overflow-hidden break-words">
           <div className="font-bold">{display_name}</div>
           <div>
             @{username}

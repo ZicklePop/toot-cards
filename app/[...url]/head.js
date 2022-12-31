@@ -43,7 +43,7 @@ export default async function Head({ params: { url } }) {
     }
   )
   const hasMedia = media_attachments.length > 0
-  const detailedDescription = `${description}💬${replies_count} 🚀${reblogs_count} ⭐️${favourites_count}`
+  const detailedDescription = `${description} \n💬${replies_count} 🚀${reblogs_count} ⭐️${favourites_count}`
   const imgJson = {
     account: {
       avatar,
