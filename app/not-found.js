@@ -1,5 +1,4 @@
 import ExclamationTriangleIcon from '@heroicons/react/24/outline/ExclamationTriangleIcon'
-import Link from 'next/link'
 
 export default function NotFound() {
   return (
@@ -8,15 +7,15 @@ export default function NotFound() {
         <span className="m-3 text-rose-500">
           <ExclamationTriangleIcon className="h-6 w-6" />
         </span>
-        Page not found
+        Toot not found
       </div>
       <div className="flex w-full justify-center py-3">
-        <Link
+        <a
           href="/"
           className="rounded border-2 border-indigo-600 bg-indigo-500 px-5 py-3 font-medium text-white shadow-lg hover:bg-indigo-600 active:bg-indigo-700 motion-safe:transition-colors"
         >
           Home
-        </Link>
+        </a>
       </div>
     </div>
   )
