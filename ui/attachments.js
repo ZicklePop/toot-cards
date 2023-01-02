@@ -1,34 +1,45 @@
-/* eslint-disable @next/next/no-img-element */
-import PlayIcon from '@heroicons/react/24/outline/PlayIcon'
+import ImageAttachment from './image-attachment'
+import VideoAttachment from './video-attachment'
 
 export default function Attachments({ attachments }) {
-  if (!attachments || attachments.length === 0) return null
-  const hasMultipleAttachments = attachments.length > 1
-
+  if (!attachments || attachments.length === 0) {
+    return null
+  }
   return (
-    <div className="pt-3">
-      {attachments?.map(({ description, id, preview_url, type, url }) => (
-        <a
-          key={id}
-          href={url}
-          className={`relative ${
-            hasMultipleAttachments ? 'inline-block w-1/2' : 'block'
-          }`}
-        >
-          {(type === 'video' || type === 'gifv') && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="rounded-lg border-2 bg-black/10 px-8 py-4 text-white shadow-md backdrop-blur-sm hover:scale-110 hover:bg-black/30 active:scale-95 active:bg-black/40 motion-safe:transition-all">
-                <PlayIcon className="h-6 w-6" />
-              </div>
+    <div className="mt-3 grid w-full grid-flow-row grid-cols-2 gap-0">
+      {attachments?.map((attachment, i) => {
+        const firstInOdds = i === 0 && attachments.length % 2
+        const isImage = attachment.type === 'image'
+        const isVideo =
+          attachment.type === 'video' || attachment.type === 'gifv'
+        const onlyAttachment = i === 0 && attachments.length === 1
+
+        const anchorCx = `${onlyAttachment ? 'col-span-2' : ''} ${
+          firstInOdds ? 'row-span-2' : ''
+        }`
+        const innerCx = `w-full h-full relative ${
+          firstInOdds && !onlyAttachment ? 'aspect-vertical-video' : ''
+        } ${!firstInOdds && !onlyAttachment ? 'aspect-square' : ''}`
+
+        return (
+          <a key={attachment.id} href={attachment.url} className={anchorCx}>
+            <div className={innerCx}>
+              {isVideo && (
+                <VideoAttachment
+                  {...attachment}
+                  onlyAttachment={onlyAttachment}
+                />
+              )}
+              {isImage && (
+                <ImageAttachment
+                  {...attachment}
+                  onlyAttachment={onlyAttachment}
+                />
+              )}
             </div>
-          )}
-          <img
-            className="mx-auto max-h-96"
-            src={preview_url}
-            alt={description}
-          />
-        </a>
-      ))}
+          </a>
+        )
+      })}
     </div>
   )
 }

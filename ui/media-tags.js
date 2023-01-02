@@ -21,7 +21,7 @@ export default function MediaTags({ media_attachments = [] }) {
           </>
         )
       }
-      if (type === 'video') {
+      if (type === 'video' || type === 'gifv') {
         return (
           <>
             <meta name="twitter:card" content="player" />
