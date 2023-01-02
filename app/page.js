@@ -43,6 +43,14 @@ export default async function Page() {
           <li className="py-1">
             <a
               className="text-indigo-500 underline"
+              href="/@TheEnbyWitch@peoplemaking.games/109435088654382380"
+            >
+              @TheEnbyWitch@peoplemaking.games/109435088654382380
+            </a>
+          </li>
+          <li className="py-1">
+            <a
+              className="text-indigo-500 underline"
               href="/https://nyan.lol/@zicklepop/109549679282144965"
             >
               https://nyan.lol/@zicklepop/109549679282144965

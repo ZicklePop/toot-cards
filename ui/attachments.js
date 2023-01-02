@@ -1,5 +1,5 @@
-import ImageAttachment from './image-attachment'
-import VideoAttachment from './video-attachment'
+import AttachmentImage from './attachment-image'
+import AttachmentVideo from './attachment-video'
 
 export default function Attachments({ attachments }) {
   if (!attachments || attachments.length === 0) {
@@ -25,13 +25,13 @@ export default function Attachments({ attachments }) {
           <a key={attachment.id} href={attachment.url} className={anchorCx}>
             <div className={innerCx}>
               {isVideo && (
-                <VideoAttachment
+                <AttachmentVideo
                   {...attachment}
                   onlyAttachment={onlyAttachment}
                 />
               )}
               {isImage && (
-                <ImageAttachment
+                <AttachmentImage
                   {...attachment}
                   onlyAttachment={onlyAttachment}
                 />
