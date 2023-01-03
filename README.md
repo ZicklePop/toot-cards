@@ -12,12 +12,8 @@ javascript:(function(){ window.location.href = 'https://toot.cards/' + window.lo
 
 ## todo
 
-- [ ] gifv support
-
-
-## future
-
-- [ ] image shadowbox
-- [ ] video playback
 - [ ] ability to look up users
 - [ ] ability to see replies
+- [ ] fix character encoding on image generation
+- [ ] lightbox usability improvements
+- [ ] link to bookmarklet on front page
