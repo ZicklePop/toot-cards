@@ -10,10 +10,11 @@ export default function LightboxVideo({
     <video
       aria-label={description || 'Video attachment'}
       autoPlay
-      controls
       className="max-h-screen max-w-full drop-shadow-2xl"
+      controls
       height={height}
       loop
+      playsInline
       poster={preview_url}
       preload="auto"
       role="button"
