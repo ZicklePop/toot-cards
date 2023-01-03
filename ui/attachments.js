@@ -1,5 +1,6 @@
 import AttachmentImage from './attachment-image'
 import AttachmentVideo from './attachment-video'
+import LightboxHandler from './lightbox-handler'
 
 export default function Attachments({ attachments }) {
   if (!attachments || attachments.length === 0) {
@@ -22,22 +23,28 @@ export default function Attachments({ attachments }) {
         } ${!firstInOdds && !onlyAttachment ? 'aspect-square' : ''}`
 
         return (
-          <a key={attachment.id} href={attachment.url} className={anchorCx}>
-            <div className={innerCx}>
-              {isVideo && (
-                <AttachmentVideo
-                  {...attachment}
-                  onlyAttachment={onlyAttachment}
-                />
-              )}
-              {isImage && (
-                <AttachmentImage
-                  {...attachment}
-                  onlyAttachment={onlyAttachment}
-                />
-              )}
-            </div>
-          </a>
+          <LightboxHandler
+            key={attachment.id}
+            currentAttachment={attachment}
+            attachments={attachments}
+          >
+            <a href={attachment.url} className={anchorCx}>
+              <div className={innerCx}>
+                {isVideo && (
+                  <AttachmentVideo
+                    {...attachment}
+                    onlyAttachment={onlyAttachment}
+                  />
+                )}
+                {isImage && (
+                  <AttachmentImage
+                    {...attachment}
+                    onlyAttachment={onlyAttachment}
+                  />
+                )}
+              </div>
+            </a>
+          </LightboxHandler>
         )
       })}
     </div>

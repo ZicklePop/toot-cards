@@ -18,5 +18,11 @@ export default function ImageAttachment({
         fill: true,
         className: 'object-cover',
       }
-  return <Image alt={description} src={preview_url} {...imageProps} />
+  return (
+    <Image
+      alt={description || 'Image attachment'}
+      src={preview_url}
+      {...imageProps}
+    />
+  )
 }
