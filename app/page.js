@@ -67,14 +67,24 @@ export default async function Page() {
           </li>
         </ul>
         <p className="max-w-sm pt-3 pb-1">
-          You can add this{' '}
+          {'You can add this '}
           <span
             className="inline-block rounded-full bg-indigo-500 px-2 py-0 text-white underline"
             dangerouslySetInnerHTML={{
               __html: `<a href="${bookmarklet}">Toot.cards</a>`,
             }}
-          />{' '}
-          bookmarklet to your address bar to quickly view a post here.
+          />
+          {' bookmarklet to your address bar to quickly view a post here.'}
+        </p>
+        <p className="pt-3 pb-1">
+          {'made with <3 by '}
+          <a
+            className="text-indigo-500 underline"
+            href="https://melaniekat.com"
+            rel="me"
+          >
+            melanie kat
+          </a>
         </p>
       </div>
     </Form>
