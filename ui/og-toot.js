@@ -5,17 +5,29 @@ import formatDate from 'lib/format-date'
 import sanitizeHtml from 'sanitize-html'
 
 export default function OGToot({
-  account: { avatar, display_name, username, url },
+  avatar,
   content,
   created_at,
+  display_name,
   favourites_count,
   reblogs_count,
   replies_count,
+  url,
+  username,
 }) {
   const host = url.split('/')[2]
+
+  const cleanDisplayName = display_name
+    ?.replace(/:.*?:/g, '')
+    .replace(/\b/g, ' ')
+  const cleanContent = sanitizeHtml(content, {
+    allowedTags: [],
+    allowedAttributes: {},
+  })
+
   return (
     <div
-      style={{ fontFamily: '"IBM Plex"' }}
+      style={{ fontFamily: '"Open Sans"' }}
       tw="flex flex-col h-screen w-full text-neutral-800 bg-neutral-100 p-8"
     >
       <div tw="flex w-full flex-row">
@@ -29,10 +41,10 @@ export default function OGToot({
           <div
             tw="flex"
             style={{
-              fontFamily: '"IBM Plex Bold"',
+              fontFamily: '"Open Sans Bold"',
             }}
           >
-            {display_name?.replace(/:.*?:/gi, '')}
+            {cleanDisplayName}
           </div>
           <div tw="flex text-4xl">
             @{username}
@@ -50,15 +62,9 @@ export default function OGToot({
       <div tw="flex relative flex-col grow justify-center text-6xl py-4">
         <div
           tw="flex overflow-hidden max-h-[21rem] w-full"
-          style={{ whiteSpace: 'pre-line' }}
+          style={{ overflowWrap: 'break-word' }}
         >
-          {sanitizeHtml(
-            content?.replaceAll('</p>', '\n\n').replaceAll('<br />', '\n'),
-            {
-              allowedTags: [],
-              allowedAttributes: {},
-            }
-          )}
+          {cleanContent}
         </div>
         <div
           tw="flex absolute bottom-0 mb-4 h-12 w-full"

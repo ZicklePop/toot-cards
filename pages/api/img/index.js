@@ -6,11 +6,19 @@ export const config = {
 }
 
 const font = fetch(
-  new URL('../../../public/IBMPlexSans-Medium.ttf', import.meta.url)
+  new URL('../../../public/OpenSans-Regular.ttf', import.meta.url)
 ).then(res => res.arrayBuffer())
 const boldFont = fetch(
-  new URL('../../../public/IBMPlexSans-Bold.ttf', import.meta.url)
+  new URL('../../../public/OpenSans-SemiBold.ttf', import.meta.url)
 ).then(res => res.arrayBuffer())
+
+function getObj(searchParams) {
+  const obj = {}
+  searchParams.forEach((value, key) => {
+    obj[key] = value
+  })
+  return obj
+}
 
 export default async function handler(req) {
   const fontData = await font
@@ -20,12 +28,12 @@ export default async function handler(req) {
     height: 630,
     fonts: [
       {
-        name: 'IBM Plex',
+        name: 'Open Sans',
         data: fontData,
         style: 'normal',
       },
       {
-        name: 'IBM Plex Bold',
+        name: 'Open Sans Bold',
         data: boldFontData,
         style: 'normal',
       },
@@ -34,18 +42,15 @@ export default async function handler(req) {
 
   try {
     const { searchParams } = new URL(req.url)
-    const imgData = searchParams.get('q')
-    // Using the deprecated atob because NextJS
-    // Edge functions don't support Buffer
-    const json = JSON.parse(atob(decodeURIComponent(imgData)))
-    return new ImageResponse(<OGToot {...json} />, config)
+    const data = getObj(searchParams)
+    return new ImageResponse(<OGToot {...data} />, config)
   } catch (e) {
     return new ImageResponse(
       (
         <div tw="text-3xl bg-white h-full w-full flex text-center items-center justify-center">
           <p
             style={{
-              fontFamily: '"IBM Plex"',
+              fontFamily: '"Open Sans"',
             }}
           >{`Failed to generate image with error: ${e.message}`}</p>
         </div>
