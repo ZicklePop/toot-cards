@@ -1,6 +1,7 @@
 import Logo from '../ui/logo'
 import Form from './form'
 import mastodonURIRegex from '../lib/mastodon-uri-regex'
+import bookmarklet from 'lib/bookmarklet'
 
 const mastodonURIRegexString = mastodonURIRegex
   .toString()
@@ -65,6 +66,16 @@ export default async function Page() {
             </a>
           </li>
         </ul>
+        <p className="max-w-sm pt-3 pb-1">
+          You can add this{' '}
+          <span
+            className="inline-block rounded-full bg-indigo-500 px-2 py-0 text-white underline"
+            dangerouslySetInnerHTML={{
+              __html: `<a href="${bookmarklet}">Toot.cards</a>`,
+            }}
+          />{' '}
+          bookmarklet to your address bar to quickly view a post here.
+        </p>
       </div>
     </Form>
   )

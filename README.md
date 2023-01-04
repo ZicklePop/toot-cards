@@ -15,5 +15,3 @@ javascript:(function(){ window.location.href = 'https://toot.cards/' + window.lo
 - [ ] ability to look up users
 - [ ] ability to see replies
 - [ ] fix character encoding on image generation
-- [ ] lightbox usability improvements
-- [ ] link to bookmarklet on front page
