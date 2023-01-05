@@ -7,4 +7,4 @@ A better way to share Mastodon posts with post to image generation and better em
 
 - [ ] ability to look up users
 - [ ] ability to see replies
-- [ ] fix character encoding on image generation
+- [ ] lightboxes sometimes get confused about which attachment you clicked on
