@@ -1,25 +1,17 @@
-export default function LightboxVideo({
-  description,
-  preview_url,
-  url,
-  meta: {
-    original: { width, height },
-  },
-}) {
+export default function LightboxVideo({ id, description, preview_url, url }) {
   return (
     <video
       aria-label={description || 'Video attachment'}
       autoPlay
-      className="max-h-screen max-w-full drop-shadow-2xl"
+      className="max-h-[100svh] object-contain drop-shadow-2xl"
       controls
-      height={height}
+      id={id}
       loop
+      onClick={e => e.stopPropagation()}
       playsInline
       poster={preview_url}
       preload="auto"
-      role="button"
       src={url}
-      width={width}
     ></video>
   )
 }

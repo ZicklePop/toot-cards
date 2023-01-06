@@ -1,17 +1,33 @@
-import LightboxControls from './lightbox-controls'
-import LightboxImage from './lightbox-image'
-import LightboxVideo from './lightbox-video'
+'use client'
 
-export default function Lightbox({ current, ...controls }) {
-  const isImage = current.type === 'image'
-  const isVideo = current.type === 'video' || current.type === 'gifv'
+import LightboxAttachment from './lightbox-attachment'
+import LightboxControls from './lightbox-controls'
+import Portal from './portal'
+import { useEffect } from 'react'
+
+export default function Lightbox({ attachments, selected, show, onClose }) {
+  useEffect(() => {
+    if (selected) {
+      const target = document.getElementById(selected)
+      target.scrollIntoView()
+    }
+  }, [selected])
+
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm dark:bg-black/50">
-      <div className="relative flex h-full items-center justify-center">
-        {isImage && <LightboxImage {...current} />}
-        {isVideo && <LightboxVideo {...current} />}
-        <LightboxControls isVideo={isVideo} {...controls} />
-      </div>
-    </div>
+    <>
+      {show && (
+        <Portal>
+          <div
+            className="fixed inset-0 flex snap-x snap-mandatory flex-row items-center gap-8 overflow-x-auto overflow-y-hidden bg-black bg-black/80 backdrop-blur-sm dark:bg-black/50"
+            onClick={onClose}
+          >
+            {attachments.map(current => (
+              <LightboxAttachment current={current} key={current.id} />
+            ))}
+          </div>
+          <LightboxControls onClose={onClose} />
+        </Portal>
+      )}
+    </>
   )
 }
