@@ -1,7 +1,8 @@
-import Logo from '../ui/logo'
+import Copy from '../ui/copy'
 import Form from './form'
-import mastodonURIRegex from '../lib/mastodon-uri-regex'
+import Logo from '../ui/logo'
 import bookmarklet from 'lib/bookmarklet'
+import mastodonURIRegex from '../lib/mastodon-uri-regex'
 
 const mastodonURIRegexString = mastodonURIRegex
   .toString()
@@ -66,16 +67,20 @@ export default async function Page() {
             </a>
           </li>
         </ul>
-        <p className="max-w-sm pt-3 pb-1">
+        <div className="max-w-sm pt-3 pb-1">
           {'You can add this '}
-          <span
-            className="inline-block rounded-full bg-indigo-500 px-2 py-0 text-white underline"
-            dangerouslySetInnerHTML={{
-              __html: `<a href="${bookmarklet}">Toot.cards</a>`,
-            }}
-          />
-          {' bookmarklet to your address bar to quickly view a post here.'}
-        </p>
+          <Copy content={bookmarklet}>
+            <span
+              className="inline-block rounded-full bg-indigo-500 px-2 py-0 text-white underline"
+              dangerouslySetInnerHTML={{
+                __html: `<a href="${bookmarklet}">Toot.cards</a>`,
+              }}
+            />
+          </Copy>
+          {
+            ' bookmarklet to your address bar or tap to copy it in to a new bookmark manually.'
+          }
+        </div>
         <p className="pt-3 pb-1">
           {'made with <3 by '}
           <a
