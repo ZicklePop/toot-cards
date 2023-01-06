@@ -20,6 +20,11 @@ export default function Attachments({ attachments }) {
     toggle(true)
   }
 
+  const handleClose = () => {
+    setSelected()
+    toggle(false)
+  }
+
   return (
     <div className="mt-3 grid w-full grid-flow-row grid-cols-2 gap-0">
       {attachments?.map((attachment, i) => {
@@ -60,7 +65,7 @@ export default function Attachments({ attachments }) {
       })}
       <Lightbox
         attachments={attachments}
-        onClose={() => toggle(false)}
+        onClose={handleClose}
         selected={selected}
         show={show}
       />
