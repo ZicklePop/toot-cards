@@ -85,10 +85,9 @@ export default async function Page() {
           {'made with <3 by '}
           <a
             className="text-indigo-500 underline"
-            href="https://melaniekat.com"
-            rel="me"
+            href="https://girlfriend.technology"
           >
-            melanie kat
+            girlfriend technology
           </a>
         </p>
       </div>
