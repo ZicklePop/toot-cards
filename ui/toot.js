@@ -24,7 +24,7 @@ export default function Toot({
   }
   return (
     <>
-      <div className="my-3 w-full rounded-md bg-neutral-100 py-4 shadow-lg dark:bg-neutral-800 md:py-4">
+      <div className="w-full rounded-md bg-neutral-100 py-4 shadow-lg dark:bg-neutral-800 md:py-4">
         <div className="px-3 md:px-5">
           <UserDetails {...account} />
           <Content content={content} />

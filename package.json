@@ -19,6 +19,7 @@
     "@tailwindcss/typography": "^0.5.8",
     "@vercel/og": "^0.0.21",
     "autoprefixer": "^10.4.13",
+    "html-to-image": "^1.11.4",
     "lodash": "^4.17.21",
     "next": "^13.1.1",
     "postcss": "^8.4.20",
