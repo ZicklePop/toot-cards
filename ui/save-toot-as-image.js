@@ -1,35 +1,36 @@
 'use client'
 
-import { useState } from 'react'
 import { toPng } from 'html-to-image'
 
-export default function SaveTootAsImage({ children, ...props }) {
-  const [shouldHide, setShouldHide] = useState(false)
-
-  const handleClick = e => {
-    e.preventDefault()
-    setShouldHide(true)
-    const toot = document.getElementById('toot')
-    toPng(toot)
-      .then(dataUrl => {
+export default function SaveTootAsImage({
+  children,
+  filename = 'toot.png',
+  ...props
+}) {
+  const handleClick = () => {
+    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+      // Temporary using to share url
+      // until I get Safari to work
+      // with downloading an image.
+      // Sorry :(
+      navigator
+        .share({
+          url: window.location.href,
+        })
+        .catch(() => {})
+    } else {
+      toPng(document.getElementById('toot'), { quality: 1 }).then(dataUrl => {
         const link = document.createElement('a')
-        link.download = 'toot.png'
+        link.download = filename
         link.href = dataUrl
         link.click()
       })
-      .finally(() => {
-        setShouldHide(false)
-      })
+    }
   }
 
   return (
-    <a
-      href="#"
-      onClick={handleClick}
-      className={`cursor-pointer ${shouldHide ? 'outline-none' : ''}`}
-      {...props}
-    >
+    <button className="cursor-pointer" onClick={handleClick} {...props}>
       {children}
-    </a>
+    </button>
   )
 }
