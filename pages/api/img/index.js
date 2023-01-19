@@ -6,10 +6,10 @@ export const config = {
 }
 
 const font = fetch(
-  new URL('../../../public/OpenSans-Regular.ttf', import.meta.url)
+  new URL('../../../public/Overpass-SemiBold.ttf', import.meta.url)
 ).then(res => res.arrayBuffer())
 const boldFont = fetch(
-  new URL('../../../public/OpenSans-SemiBold.ttf', import.meta.url)
+  new URL('../../../public/Overpass-Bold.ttf', import.meta.url)
 ).then(res => res.arrayBuffer())
 
 function getObj(searchParams) {
@@ -28,12 +28,12 @@ export default async function handler(req) {
     height: 630,
     fonts: [
       {
-        name: 'Open Sans',
+        name: 'Overpass',
         data: fontData,
         style: 'normal',
       },
       {
-        name: 'Open Sans Bold',
+        name: 'Overpass Bold',
         data: boldFontData,
         style: 'normal',
       },

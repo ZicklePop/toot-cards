@@ -27,7 +27,7 @@ export default function OGToot({
 
   return (
     <div
-      style={{ fontFamily: '"Open Sans"' }}
+      style={{ fontFamily: '"Overpass"' }}
       tw="flex flex-col h-screen w-full text-neutral-800 bg-neutral-100 p-8"
     >
       <div tw="flex w-full flex-row">
@@ -41,7 +41,7 @@ export default function OGToot({
           <div
             tw="flex"
             style={{
-              fontFamily: '"Open Sans Bold"',
+              fontFamily: '"Overpass Bold"',
             }}
           >
             {cleanDisplayName}
@@ -74,7 +74,7 @@ export default function OGToot({
           }}
         ></div>
       </div>
-      <div tw="flex w-full flex-row text-neutral-500 justify-between text-3xl">
+      <div tw="flex w-full flex-row text-neutral-500 leading-relaxed justify-between text-3xl">
         <div tw="flex flex-row grow items-center">
           <div tw="flex mr-8">
             <svg
