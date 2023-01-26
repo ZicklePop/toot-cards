@@ -1,5 +1,3 @@
-'use client'
-
 import formatDate from 'lib/format-date'
 
 export default function StatusTime({ time, ...rest }) {
