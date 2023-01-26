@@ -1,7 +1,6 @@
 export default function DefaultTags() {
   return (
     <>
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       <link rel="icon" href="/favicon.ico" />
       <link rel="mask-icon" sizes="any" href="/mask-icon.svg" color="#6366f1" />
       <meta charSet="utf-8" />

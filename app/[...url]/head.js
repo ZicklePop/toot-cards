@@ -13,23 +13,26 @@ export default async function Head({ params: { url } }) {
   }
 
   const {
-    title,
+    avatar,
+    description,
     detailedDescription,
     fullUsername,
-    media_attachments,
     hasMedia,
     imageUrl,
-    description,
+    media_attachments,
+    title,
   } = data
 
   return (
     <>
       <DefaultTags />
+      <link rel="apple-touch-icon" href={avatar} />
       <meta name="title" content={title} />
       <meta name="description" content={detailedDescription} />
       <meta property="og:description" content={detailedDescription} />
       <meta property="og:site_name" content={fullUsername} />
       <meta property="og:title" content={title} />
+      <meta property="og:url" content="https://twitter.com/0/status/0" />
       <meta property="twitter:creator" content={fullUsername} />
       <meta property="twitter:description" content={detailedDescription} />
       <meta property="twitter:site" content={fullUsername} />

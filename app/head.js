@@ -7,6 +7,7 @@ export default function Head() {
   return (
     <>
       <DefaultTags />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       <meta name="description" content={description} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content="/cover.png" />
