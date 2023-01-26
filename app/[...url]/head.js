@@ -17,8 +17,6 @@ export default async function Head({ params: { url } }) {
     description,
     detailedDescription,
     fullUsername,
-    hasMedia,
-    imageUrl,
     media_attachments,
     title,
   } = data
@@ -38,17 +36,6 @@ export default async function Head({ params: { url } }) {
       <meta property="twitter:site" content={fullUsername} />
       <meta property="twitter:title" content={title} />
       <MediaTags media_attachments={media_attachments} />
-      {!hasMedia && (
-        <>
-          <meta property="og:image" content={imageUrl} />
-          <meta property="og:image:alt" content={description} />
-          <meta property="og:image:height" content="630" />
-          <meta property="og:image:width" content="1200" />
-          <meta property="twitter:card" content="summary_large_image" />
-          <meta property="twitter:image" content={imageUrl} />
-          <meta property="twitter:image:alt" content={description} />
-        </>
-      )}
       <title>{`${title}: ${description}`}</title>
     </>
   )
