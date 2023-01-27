@@ -1,5 +1,6 @@
 import Toot from '../../ui/toot'
 import getStatusFromParams from '../../lib/get-status-from-params'
+import Error from '../error'
 
 export default async function Page({ params: { url } }) {
   // temp solution to fix NextJS build error
@@ -9,7 +10,7 @@ export default async function Page({ params: { url } }) {
   try {
     json = await getStatusFromParams(url)
   } catch (error) {
-    console.error(error)
+    return <Error error={error.messsage} />
   }
 
   return (
