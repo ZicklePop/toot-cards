@@ -12,8 +12,6 @@ export default async function Head({ params: { url } }) {
     return <FallbackHead />
   }
 
-  const isImessage = await shouldUseImessageHack()
-
   const {
     avatar,
     description,
