@@ -3,7 +3,6 @@ import ArrowUpOnSquare from '@heroicons/react/24/outline/ArrowUpOnSquareIcon'
 import ChatBubbleLeftEllipsisIcon from '@heroicons/react/24/outline/ChatBubbleLeftEllipsisIcon'
 import ClockIcon from '@heroicons/react/24/outline/ClockIcon'
 import PencilSquareIcon from '@heroicons/react/24/outline/PencilSquareIcon'
-import SaveTootAsImage from './save-toot-as-image'
 import StarIcon from '@heroicons/react/24/outline/StarIcon'
 import StatusBox from './status-box'
 import StatusText from './status-text'
@@ -32,11 +31,6 @@ export default function StatusDetails({
           <StatusBox title="fav count">
             <StarIcon className="h-6 w-6" />
             <StatusText>{favourites_count}</StatusText>
-          </StatusBox>
-          <StatusBox title="save toot as image">
-            <SaveTootAsImage>
-              <ArrowUpOnSquare className="h-6 w-6" />
-            </SaveTootAsImage>
           </StatusBox>
         </div>
         <div className="w-full align-top md:order-1">
