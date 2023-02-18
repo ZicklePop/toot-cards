@@ -36,7 +36,7 @@ export default function Toot({
         </div>
         <Attachments attachments={media_attachments} />
         <div className="px-3 md:px-5">
-          <StatusDetails {...status} />
+          <StatusDetails kind={kind} {...status} />
         </div>
       </div>
       {media_attachments?.length > 0 && <div id="portal-root"></div>}

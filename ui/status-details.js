@@ -15,12 +15,16 @@ export default function StatusDetails({
   reblogs_count,
   replies_count,
   url,
+  kind,
 }) {
   return (
     <div className="pt-4">
       <div className="flex flex-col text-neutral-500 dark:text-neutral-400 md:flex-row">
         <div className="flex flex-row pb-2 align-top md:order-2 md:pb-0">
-          <StatusBox title="reply count">
+          <StatusBox
+            title="reply count"
+            href={kind !== 'current' ? `https://toot.cards/${url}` : null}
+          >
             <ChatBubbleLeftEllipsisIcon className="h-6 w-6" />
             <StatusText>{replies_count}</StatusText>
           </StatusBox>
