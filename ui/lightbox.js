@@ -18,7 +18,7 @@ export default function Lightbox({ attachments, selected, show, onClose }) {
       {show && (
         <Portal>
           <div
-            className="fixed inset-0 flex snap-x snap-mandatory flex-row items-center gap-8 overflow-x-auto overflow-y-hidden bg-black bg-black/80 backdrop-blur-sm dark:bg-black/50"
+            className="fixed inset-0 z-10 flex snap-x snap-mandatory flex-row items-center gap-8 overflow-x-auto overflow-y-hidden bg-black bg-black/80 backdrop-blur-sm dark:bg-black/50"
             onClick={onClose}
           >
             {attachments.map(current => (
