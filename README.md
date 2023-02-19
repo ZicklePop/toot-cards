@@ -1,12 +1,12 @@
 # [toot.cards](https://toot.cards)
 
-A better way to share Mastodon posts with post to image generation and better embed support.
+A minimal way to share Mastodon posts with better embed support.
 
 
 ## todo
 
 - [ ] ability to look up users
-- [ ] ability to see replies
-- [ ] poll support
-- [ ] content warnings
 - [ ] audio files
+- [ ] content warnings
+- [ ] custom emoji
+- [ ] poll support
