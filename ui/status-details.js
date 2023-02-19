@@ -1,5 +1,4 @@
 import ArrowPathIcon from '@heroicons/react/24/outline/ArrowPathIcon'
-import ArrowUpOnSquare from '@heroicons/react/24/outline/ArrowUpOnSquareIcon'
 import ChatBubbleLeftEllipsisIcon from '@heroicons/react/24/outline/ChatBubbleLeftEllipsisIcon'
 import ClockIcon from '@heroicons/react/24/outline/ClockIcon'
 import PencilSquareIcon from '@heroicons/react/24/outline/PencilSquareIcon'
@@ -23,7 +22,7 @@ export default function StatusDetails({
         <div className="flex flex-row pb-2 align-top md:order-2 md:pb-0">
           <StatusBox
             title="reply count"
-            href={kind !== 'current' ? `https://toot.cards/${url}` : null}
+            href={kind !== 'current' ? `/${url}` : null}
           >
             <ChatBubbleLeftEllipsisIcon className="h-6 w-6" />
             <StatusText>{replies_count}</StatusText>

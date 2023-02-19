@@ -26,8 +26,8 @@ export default function Toot({
   return (
     <>
       <div
-        className={`w-full rounded-md bg-neutral-100 py-4 shadow-lg dark:bg-neutral-800 md:py-4 ${
-          kind === 'reply' ? 'mt-5' : ''
+        className={`w-full rounded-md bg-neutral-100 py-4 dark:bg-neutral-800 md:py-4 ${
+          kind === 'reply' ? 'my-5 shadow' : 'shadow-lg'
         }`}
       >
         <div className="px-3 md:px-5">
