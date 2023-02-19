@@ -6,7 +6,7 @@ import { useState } from 'react'
 export default function LoadMore({ children, toots }) {
   const [shouldShowMore, setShouldShowMore] = useState(false)
 
-  if (toots.length === 0) {
+  if (!toots || toots.length === 0) {
     return null
   }
 
