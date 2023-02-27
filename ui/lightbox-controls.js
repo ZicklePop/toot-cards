@@ -8,7 +8,7 @@ export default function LightboxControls({ onClose }) {
 
   return (
     <>
-      <div className="absolute top-0 right-0 flex items-start justify-end">
+      <div className="absolute top-0 right-0 z-10 flex items-start justify-end">
         <button
           className="flex h-24 items-start"
           onClick={onClose}
