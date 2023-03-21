@@ -4,6 +4,36 @@ import Logo from '../ui/logo'
 import bookmarklet from 'lib/bookmarklet'
 import mastodonURIRegex from '../lib/mastodon-uri-regex'
 
+const title = 'toot cards'
+const description = 'pretty cards and embeds for toots'
+
+export const metadata = {
+  applicationName: title,
+  description,
+  keywords: 'mastodon, toot, post, status',
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+    other: {
+      rel: 'mask-icon',
+      url: '/mask-icon.svg',
+      color: '#6366f1',
+    },
+  },
+  title,
+  openGraph: {
+    description,
+    images: {
+      alt: 'purple megahorn',
+      height: 630,
+      url: '/cover.png',
+      width: 1200,
+    },
+    title,
+    type: 'website',
+  },
+}
+
 const mastodonURIRegexString = mastodonURIRegex
   .toString()
   .substring(1, mastodonURIRegex.toString().length - 2)

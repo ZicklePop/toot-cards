@@ -5,6 +5,66 @@ import LoadMore from './load-more'
 import Toot from '../../ui/toot'
 import getStatusFromParams from '../../lib/get-status-from-params'
 
+export async function generateMetadata({ params: { url } }) {
+  const data = await getStatusFromParams(url)
+  console.log(data)
+  const {
+    avatar,
+    description,
+    detailedDescription,
+    fullUsername,
+    media_attachments,
+    title,
+  } = data
+
+  const images = []
+  const videos = []
+  media_attachments.forEach(
+    ({
+      description,
+      type,
+      url,
+      meta: {
+        original: { width, height },
+      },
+    }) => {
+      if (type === 'image') {
+        images.push({
+          alt: description,
+          height,
+          url,
+          width,
+        })
+      }
+      if (type === 'video' || type === 'gifv') {
+        videos.push({
+          height,
+          type: 'video/mp4',
+          url,
+          width,
+        })
+      }
+    }
+  )
+
+  return {
+    title: `${title}: ${description}`,
+    description: detailedDescription,
+    icons: {
+      apple: avatar,
+    },
+    openGraph: {
+      description: detailedDescription,
+      images,
+      siteName: fullUsername,
+      title,
+      type: videos.length ? 'video.other' : 'website',
+      url: `https://twitter.com/a/status/a`,
+      videos,
+    },
+  }
+}
+
 export default async function Page({ params: { url } }) {
   let json = {}
   try {
