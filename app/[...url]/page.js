@@ -4,10 +4,10 @@ import Error from '../error'
 import LoadMore from './load-more'
 import Toot from '../../ui/toot'
 import getStatusFromParams from '../../lib/get-status-from-params'
+import getHeadData from '../../lib/get-head-data'
 
 export async function generateMetadata({ params: { url } }) {
-  const data = await getStatusFromParams(url)
-  console.log(data)
+  const data = await getHeadData(url)
   const {
     avatar,
     description,
