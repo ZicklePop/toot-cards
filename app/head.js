@@ -19,7 +19,6 @@ export default function Head() {
       <meta property="og:image:width" content="1200" />
       <meta property="og:title" content={title} />
       <meta property="og:type" content="website" />
-      <meta property="omg:proof" content="proven.lol/3c133a" />
       <title>{title}</title>
     </>
   )
