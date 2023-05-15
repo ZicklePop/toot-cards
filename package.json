@@ -14,7 +14,7 @@
     "test": "echo \"No tests\""
   },
   "dependencies": {
-    "@heroicons/react": "^2.0.17",
+    "@heroicons/react": "^2.0.18",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "^10.4.14",
