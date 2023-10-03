@@ -37,7 +37,7 @@ export async function GET(request) {
       const title = `${name} @${username}@${server}`
       const image = media_attachments[0]?.url || card?.image || undefined
       const external_url = card?.url || undefined
-      const content_html = `${content}<br/><br/>💬${replies_count} 🚀${reblogs_count} ⭐️${favourites_count}`
+      const content_html = `${content}<br/>💬${replies_count} 🚀${reblogs_count} ⭐️${favourites_count}`
       return {
         content_html,
         date_published,
