@@ -10,7 +10,7 @@ export async function GET(request) {
     version: 'https://jsonfeed.org/version/1',
     title: `${server} public timeline`,
     description: `the public timeline of the mastodon instance ${server}`,
-    icon: 'https://files.nyan.lol/site_uploads/files/000/000/001/original/88c299769ac7dede.png',
+    icon: 'https://toot.cards/apple-touch-icon.png',
     home_page_url: `https://${server}/public/local`,
     feed_url: request.url,
     items: [],
