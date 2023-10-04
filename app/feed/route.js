@@ -9,8 +9,8 @@ export async function GET(request) {
 
   const jsonFeed = {
     version: 'https://jsonfeed.org/version/1',
-    title: `${server} public timeline`,
-    description: `the public timeline of the mastodon instance ${server}`,
+    title: `${server} timeline`,
+    description: `the public timeline from ${server}`,
     icon: 'https://toot.cards/apple-touch-icon.png',
     home_page_url: `https://${server}/public/local`,
     feed_url: request.url,
