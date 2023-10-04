@@ -26,7 +26,7 @@ export async function GET(request) {
   jsonFeed.items = data.map(
     ({
       id,
-      created_at: date_published,
+      created_at,
       url,
       content,
       card,
@@ -77,7 +77,7 @@ export async function GET(request) {
 
       return {
         content_html,
-        date_published,
+        date_published: created_at,
         external_url,
         id,
         image,
