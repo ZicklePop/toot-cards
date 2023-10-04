@@ -81,10 +81,10 @@ export async function GET(request) {
         external_url,
         id,
         image,
-        title: name,
+        title: acct,
         url,
         author: {
-          name: acct,
+          name,
           avatar,
           url: profile_url,
         },
