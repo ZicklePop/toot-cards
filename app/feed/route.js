@@ -37,7 +37,12 @@ export async function GET(request) {
       favourites_count,
       spoiler_text,
       poll,
+      sensitive,
     }) => {
+      if (sensitive) {
+        return
+      }
+
       const { avatar, username, display_name: name, url: profile_url } = account
       const title = `${name} (@${username}@${server})`
       const image = media_attachments[0]?.url || card?.image || undefined
@@ -59,13 +64,8 @@ export async function GET(request) {
         }
         return
       })
-      const totalVotes = poll?.votes_count || 0
       const pollOpts = poll?.options?.map(({ title, votes_count = 0 }) => {
-        const percentage =
-          totalVotes > 0 || votes_count > 0 || votes_count <= totalVotes
-            ? Math.round((votes_count / totalVotes) * 100)
-            : 0
-        return `<li>🔘 ${title} (${votes_count} votes, ${percentage}%)</li>`
+        return `<li>🔘 ${title} (${votes_count} votes)</li>`
       })
       const pollHtml = pollOpts?.length
         ? `<ul>${pollOpts.join('')}</ul><br/>`
