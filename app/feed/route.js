@@ -69,7 +69,7 @@ export async function GET(request) {
       })
       const pollHtml = pollOpts?.length
         ? `<ul>${pollOpts.join('')}</ul><br/>`
-        : undefined
+        : ''
       const content_html = `${spoiler}${content}${pollHtml}${attachments.join(
         '<br/>'
       )}${
