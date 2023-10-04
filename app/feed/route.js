@@ -34,31 +34,28 @@ export async function GET(request) {
       favourites_count,
     }) => {
       const { avatar, username, display_name: name, url: profile_url } = account
-      const title = `${name} @${username}@${server}`
+      const title = `${name} (@${username}@${server})`
       const image = media_attachments[0]?.url || card?.image || undefined
       const external_url = card?.url || undefined
       const attachments = media_attachments.map(attachment => {
         const { description = '', preview_url = '', type, url } = attachment
         const isImage = type === 'image'
         const isVideo = type === 'video' || type === 'gifv'
-
         if (isVideo) {
           return `<video aria-label="${
             description || 'Video attachment'
           }" controls="true" plays-inline="true" poster="${preview_url}" preload="auto" src="${url}"></video>`
         }
-
         if (isImage) {
           return `<img alt="${
             description || 'Image attachment'
           }" src="${url}" />`
         }
-
         return
       })
-      const content_html = `${content}${attachments.join(
-        '<br/>'
-      )}<br/>💬${replies_count} 🚀${reblogs_count} ⭐️${favourites_count}`
+      const content_html = `${content}${attachments.join('<br/>')}${
+        attachments && '<br/>'
+      }<br/>💬${replies_count} 🚀${reblogs_count} ⭐️${favourites_count}`
 
       return {
         content_html,
