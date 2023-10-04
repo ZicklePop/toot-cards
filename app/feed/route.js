@@ -43,8 +43,7 @@ export async function GET(request) {
         return
       }
 
-      const { avatar, username, display_name: name, url: profile_url } = account
-      const title = `${name} (@${username}@${server})`
+      const { avatar, acct, display_name: name, url: profile_url } = account
       const image = media_attachments[0]?.url || card?.image || undefined
       const external_url = card?.url || undefined
       const spoiler = spoiler_text ? `<p>⚠️ ${spoiler_text}</p>` : ''
@@ -82,10 +81,10 @@ export async function GET(request) {
         external_url,
         id,
         image,
-        title,
+        title: name,
         url,
         author: {
-          name,
+          name: acct,
           avatar,
           url: profile_url,
         },
