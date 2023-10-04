@@ -62,7 +62,7 @@ export async function GET(request) {
       const totalVotes = poll?.votes_count || 0
       const pollOpts = poll?.options?.map(({ title, votes_count = 0 }) => {
         const percentage =
-          totalVotes > 0 || votes_count <= totalVotes
+          totalVotes > 0 || votes_count > 0 || votes_count <= totalVotes
             ? Math.round((votes_count / totalVotes) * 100)
             : 0
         return `<li>🔘 ${title} (${votes_count} votes, ${percentage}%)</li>`
