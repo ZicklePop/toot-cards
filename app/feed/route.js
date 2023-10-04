@@ -5,6 +5,7 @@ export async function GET(request) {
   const { searchParams } = new URL(request.url)
   const server = searchParams.get('s') || 'nyan.lol'
   const format = searchParams.get('f') === 'rss' ? 'rss' : 'jsonfeed'
+  const remote = !!searchParams.get('r') || false
 
   const jsonFeed = {
     version: 'https://jsonfeed.org/version/1',
@@ -17,7 +18,9 @@ export async function GET(request) {
   }
 
   const data = await fetch(
-    `https://${server}/api/v1/timelines/public?local=true`
+    `https://${server}/api/v1/timelines/public?local=true${
+      remote ? '&remote=true' : ''
+    }}`
   ).then(res => res.json())
 
   jsonFeed.items = data.map(
@@ -32,11 +35,14 @@ export async function GET(request) {
       replies_count,
       reblogs_count,
       favourites_count,
+      spoiler_text,
+      poll,
     }) => {
       const { avatar, username, display_name: name, url: profile_url } = account
       const title = `${name} (@${username}@${server})`
       const image = media_attachments[0]?.url || card?.image || undefined
       const external_url = card?.url || undefined
+      const spoiler = spoiler_text ? `<p>⚠️ ${spoiler_text}</p>` : ''
       const attachments = media_attachments.map(attachment => {
         const { description = '', preview_url = '', type, url } = attachment
         const isImage = type === 'image'
@@ -53,7 +59,20 @@ export async function GET(request) {
         }
         return
       })
-      const content_html = `${content}${attachments.join('<br/>')}${
+      const totalVotes = poll?.votes_count || 0
+      const pollOpts = poll?.options?.map(({ title, votes_count = 0 }) => {
+        const percentage =
+          totalVotes > 0 || votes_count <= totalVotes
+            ? Math.round((votes_count / totalVotes) * 100)
+            : 0
+        return `<li>🔘 ${title} (${votes_count} votes, ${percentage}%)</li>`
+      })
+      const pollHtml = pollOpts?.length
+        ? `<ul>${pollOpts.join('')}</ul><br/>`
+        : undefined
+      const content_html = `${spoiler}${content}${pollHtml}${attachments.join(
+        '<br/>'
+      )}${
         attachments && '<br/>'
       }<br/>💬${replies_count} 🚀${reblogs_count} ⭐️${favourites_count}`
 
