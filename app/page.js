@@ -1,7 +1,7 @@
 import Copy from '../ui/copy'
 import Form from './form'
 import Logo from '../ui/logo'
-import bookmarklet from 'lib/bookmarklet'
+import bookmarklet from '../lib/bookmarklet'
 import mastodonURIRegex from '../lib/mastodon-uri-regex'
 
 const mastodonURIRegexString = mastodonURIRegex
@@ -12,7 +12,7 @@ export default async function Page() {
   return (
     <Form className="flex w-full flex-col p-3">
       <Logo />
-      <label htmlFor="url" className="block pt-3 pb-1 text-lg font-medium">
+      <label htmlFor="url" className="block pb-1 pt-3 text-lg font-medium">
         Paste a link to a Mastodon post:
       </label>
       <div className="flex flex-col md:flex-row md:items-center">
@@ -31,7 +31,7 @@ export default async function Page() {
           View Toot
         </button>
       </div>
-      <div className="pt-5 pb-3">
+      <div className="pb-3 pt-5">
         <p className="pb-1 font-medium">Example usage:</p>
         <ul className="list-outside list-disc break-all pl-5">
           <li className="py-1">
@@ -67,7 +67,7 @@ export default async function Page() {
             </a>
           </li>
         </ul>
-        <div className="max-w-sm pt-3 pb-1">
+        <div className="max-w-sm pb-1 pt-3">
           {'You can add this '}
           <Copy content={bookmarklet}>
             <span
@@ -81,7 +81,7 @@ export default async function Page() {
             ' bookmarklet to your address bar or tap to copy it in to a new bookmark manually.'
           }
         </div>
-        <p className="pt-3 pb-1">
+        <p className="pb-1 pt-3">
           {'made with <3 by '}
           <a
             className="text-indigo-500 underline"

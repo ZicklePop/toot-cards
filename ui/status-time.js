@@ -1,6 +1,6 @@
 'use client'
 
-import formatDate from 'lib/format-date'
+import formatDate from '../lib/format-date'
 import { useState, useEffect } from 'react'
 
 export default function StatusTime({ time, ...rest }) {
